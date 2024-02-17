@@ -35,12 +35,6 @@ def send_right_command(r_tau):
         r_command = ("\r\n<2?1#+%04X>\r\n" % abs(int(r_tau))).encode()
     return r_command
 
-
-def send_reset_command():
-    l_command = f"\r\nCURRENT?L#-1001|".encode()
-    r_command = f"\r\nCURRENT?R#-1001|".encode()
-    return l_command,r_command
-
 def main() : 
     try:
         # 사용자로부터 입력받기

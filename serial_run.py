@@ -43,7 +43,7 @@ class SerialReaderThread(threading.Thread):
                         print(f"control_mode: {control_mode}")
                         print(f"control_interval: {control_interval}")
                         print("=====================================")
-
+                        
     def stop(self):
         self.running = False
 
@@ -56,8 +56,7 @@ ser = serial.Serial(
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE
 )
-
-
+      
 
 def send_left_command(l_tau):
     l_command = ""
@@ -100,8 +99,7 @@ def main() :
         while True:   # 사용자가 '1'을 입력하면 명령 전송
             if user_input == '1':
 
-                
-    
+
                 l_command = send_left_command(l_tau)
                 r_command = send_right_command(r_tau)
 

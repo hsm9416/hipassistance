@@ -69,7 +69,7 @@ class CollectImu:
                                   min_hip_20_60_cv, min_hip_angle_20_60_value, 
                                   max_hip_60_80_cv, max_hip_angle_60_80_value))
 
-            if cycle ==5:
+            if cycle == 6:
                 print("gait finish!")
                 break
 
@@ -90,20 +90,6 @@ def main():
 
 if __name__ == '__main__':
     try:
-        # print("=========10========")
-        # time.sleep(1)
-        # print("=========9=========")
-        # time.sleep(1)
-        # print("=========8=========")
-        # time.sleep(1)
-        # print("=========7=========")
-        # time.sleep(1)
-        # print("=========6=========")
-        # time.sleep(1)
-        # print("=========5=========")
-        # time.sleep(1)
-        # print("=========4=========")
-        # time.sleep(1)
         print("=========3=========")
         time.sleep(1)
         print("=========2=========")

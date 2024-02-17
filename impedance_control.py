@@ -11,6 +11,7 @@ from reference import process_sequences, load_robot_state, segment_data_into_seq
 from uart import init_serial, uart_loop
 from test import send_left_command, send_right_command
 from std_msgs.msg import String,Int32,Float64
+from friction_compensate import DataReceiver, CommandSender
 # from impedance.msg import MyData
 import os
 
@@ -31,40 +32,7 @@ class ImpedanceControl:
         self.angle = angle
         self.velocity = velocity
 
-
-class DataReceiver(threading.Thread):
-    def __init__(self, ser):
-        super().__init__()
-        self.ser = ser
-        self.running = True
-        self.processed_data = None
-
-    def run(self):
-        while self.running:
-            self.processed_data = uart_loop(self.ser)
-            if self.processed_data is None:
-                print("No data or error in data reception.")
-                continue
             # 여기서 데이터 처리 로직을 추가할 수 있습니다.
-
-    def stop(self):
-        self.running = False
-
-class CommandSender(threading.Thread):
-    def __init__(self, ser):
-        super().__init__()
-        self.ser = ser
-        self.running = True
-        self.command_queue = queue.Queue()
-
-    def run(self):
-        while self.running:
-            try:
-                l_command, r_command = self.command_queue.get(timeout=0.1)
-                self.ser.write(l_command)
-                self.ser.write(r_command)
-            except queue.Empty:
-                pass
 
     def send_command(self, l_command, r_command):
         self.command_queue.put((l_command, r_command))
